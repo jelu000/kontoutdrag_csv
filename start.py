@@ -1,6 +1,5 @@
 import pandas as pd
-import hus
-import faktura
+
 import dbhandler
 import meny
 
@@ -26,27 +25,47 @@ def main():
 
         if val == "1":#Lista Hus
 
+            #print("Val 1")
+            #input("\tFortsätta? tryck Enter: ")
+            lista_hus = db_handler.read_table_hus()
+            mc = meny.print_list_hus(lista_hus)
             
-            print("Val 1")
-            input("\tFortsätta? tryck Enter: ")
-            #lista_motorcyklar = mc_handler.readSqliteTable()
-            #mc = motorcykel_app_menu.printListMotorcykel(lista_motorcyklar)
-            
-        elif val == "2":#lägg till motrcyke
+                        
+        elif val == "2":#lägg till hus
             nytthus = meny.createHus()
-            print(f"Husnr= {nytthus.husnr} förnamn {nytthus.fnamn} efter namn {nytthus.epost}  Tel {nytthus.tel}")
+            #print(f"Husnr= {nytthus.husnr} förnamn {nytthus.fnamn} efter namn {nytthus.epost}  Tel {nytthus.tel}")
             db_handler.add_hus(nytthus)
-            #mc_handler.addMotorcykel(mc)
-            print("Val 2")
             input("\tFortsätta? tryck Enter: ")
 
-        elif val == "3":#Tabort motorcykel
-            #t_id =  motorcykel_app_menu.printDeleteMotorcykel()
-            #mc_handler.deleteMotorcykel(t_id)
-            print("Val 3")
+        elif val == "3":#Tabort hus
+            #print("Val 3")
+            #input("\tFortsätta? tryck Enter: ")
+            t_husnr =  meny.printDeleteHus()
+            db_handler.deleteHus(t_husnr)
+
+        elif val == "4":#Update hus
+            print("Val 4 updatera hus")
+            input("\tFortsätta? tryck Enter: ")
+            
+        elif val == "5":#lista fakturor
+            print("Val 5 lista fakturor")
             input("\tFortsätta? tryck Enter: ")
         
-        elif val == "4":#Avsluta
+        elif val == "6":#lägg till fatura
+            nyfaktura = meny.createFaktura()
+            db_handler.add_faktura(nyfaktura)
+            #print("Val 6 add fakura")
+            #input("\tFortsätta? tryck Enter: ")
+        
+        elif val == "7":#delete faktura
+            print("Val 7 tabort fakura")
+            input("\tFortsätta? tryck Enter: ")
+        
+        elif val == "8":#Update fakura
+            print("Val 8 updatera faktura")
+            input("\tFortsätta? tryck Enter: ")
+        
+        elif val == "9":#Avsluta
             break
 
         else:

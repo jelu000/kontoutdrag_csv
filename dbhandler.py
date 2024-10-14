@@ -43,17 +43,36 @@ class DbHandler:
         cursor.close()
 
 
-    def deleteMotorcykel(self, t_id):
+    def add_faktura(self, t_faktura: faktura.Faktura):
+      
+        sqliteConnection = sqlite3.connect(self.db_name)
+        cursor = sqliteConnection.cursor()
+        sqlite_insert_query = f"""INSERT INTO fakturor
+                          (fakturanr, year, husnr, belopp, betalningsstatus, betalningsdatum, info)  
+                          VALUES  
+                          ('{t_faktura.fakturanr}', {t_faktura.year},'{t_faktura.husnr}', {t_faktura.belopp}, {t_faktura.betalningsstatus}, '{t_faktura.betalningsdatum}', '{t_faktura.info}') """
+        
+
+        #print(sqlite_insert_query)
+        #input("Vänta")
+        count = cursor.execute(sqlite_insert_query)
+        sqliteConnection.commit()
+        print(f"Record Faktura inserted successfully into SqliteDb_developers table {count} ", cursor.rowcount)
+        cursor.close()
+            
+#----------------------------------------------------------------------------------------------------------
+
+    def deleteHus(self, t_husnr):
         try:
             sqliteConnection = sqlite3.connect(self.db_name)
             cursor = sqliteConnection.cursor()
         
 
             # Deleting single record now
-            sql_delete_query = f"""DELETE from motorcyklar where id = {int(t_id)}"""
+            sql_delete_query = f"""DELETE from hus where husnr = {t_husnr}"""
             cursor.execute(sql_delete_query)
             sqliteConnection.commit()
-            print(f"\tMotorcykel med id {t_id} bortagen! ")
+            print(f"\tMotorcykel med id {t_husnr} bortagen! ")
             cursor.close()
 
         except sqlite3.Error as error:
@@ -62,7 +81,7 @@ class DbHandler:
             if sqliteConnection:
                 sqliteConnection.close()
                 #print("the sqlite connection is closed")  
-
+#----------------------------------------------------------------------------------------
     def create_conn_sqllite(self, db_file):
         # create a database connection to a SQLite database
         conn = None
@@ -76,18 +95,18 @@ class DbHandler:
                 conn.close()
 
         return conn
-    
+#----------------------------------------------------------------------------------------    
 
-    def readSqliteTable(self):
+    def read_table_hus(self):
 
-        lista_motorcyklar = []
+        lista_hus = []
 
         try:
             sqliteConnection = sqlite3.connect(self.db_name)
             cursor = sqliteConnection.cursor()
             #print("Connected to SQLite")
 
-            sqlite_select_query = """SELECT * from motorcyklar ORDER BY fabrikat"""
+            sqlite_select_query = """SELECT * from hus ORDER BY husnr"""
             cursor.execute(sqlite_select_query)
             records = cursor.fetchall()
             print("Antal rader:  ", len(records), "\n")
@@ -105,9 +124,8 @@ class DbHandler:
             '''   
 
             for row in records:
-                   #t_bike = motorcykel.Motorcykel(1,"Honda", "CB", 125, 180, 12, 110)
-                #en_motorcykel = motorcykel.Motorcykel(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-                #lista_motorcyklar.append(en_motorcykel)
+                t_hus = hus.Hus(row[1], row[2], row[3], row[4], row[5], row[0])
+                lista_hus.append(t_hus)
                 
                 cursor.close()
 
@@ -118,7 +136,7 @@ class DbHandler:
                 sqliteConnection.close()
                 print("The SQLite connection is closed")
 
-        return lista_motorcyklar
+        return lista_hus
 
 #----------------------------------------------------------------------------------------------------    
     #Skapar tabellen hus i databasen, körs bara första gången

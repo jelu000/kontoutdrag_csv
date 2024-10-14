@@ -17,7 +17,7 @@ class Faktura:
     def get_faktura(self):
         return self 
     
-    def set_fakturanrnr(self, fakturanr:str):
+    def set_fakturanr(self, fakturanr:str):
         self.fakturanr = fakturanr
 
     def set_year(self, year:int):
