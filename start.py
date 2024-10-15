@@ -28,7 +28,7 @@ def main():
             #print("Val 1")
             #input("\tFortsätta? tryck Enter: ")
             lista_hus = db_handler.read_table_hus()
-            mc = meny.print_list_hus(lista_hus)
+            thus = meny.print_list_hus(lista_hus)
             
                         
         elif val == "2":#lägg till hus
@@ -48,8 +48,9 @@ def main():
             input("\tFortsätta? tryck Enter: ")
             
         elif val == "5":#lista fakturor
-            print("Val 5 lista fakturor")
-            input("\tFortsätta? tryck Enter: ")
+           
+            lista_fakturer = db_handler.read_table_faktura()
+            tftur = meny.print_list_fakura(lista_fakturer)
         
         elif val == "6":#lägg till fatura
             nyfaktura = meny.createFaktura()

@@ -50,8 +50,8 @@ def createFaktura():
     belopp = int(input("\n\tMata in belopp: "))
     betalningsstatus = int(input("\n\tMata in betalningsstaus 1-0: "))
     betalningsdatum = input("\n\tMata in betalningsdatum: ")
-    info = input("\n\tMata in info: ")
-    return   faktura.Faktura(fakturanr, year, husnr, belopp, betalningsstatus, betalningsdatum, info)
+    f_id = input("\n\tMata in faktura id (year+fakturaNr+husNr): ")
+    return   faktura.Faktura(fakturanr, year, husnr, belopp, betalningsstatus, betalningsdatum, f_id)
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -67,13 +67,14 @@ def print_list_hus(lista_hus):
     print(t_table)
     input("Fortsätta? tryck Enter: ")
 
+
 #List all fakturor
 def print_list_fakura(lista_fakturor):
     os.system('cls' if os.name == 'nt' else 'clear')
-    t_table_fakturor = PrettyTable(['FakturaNr', 'År', 'HusNr', 'Belopp', 'Betalningsstatus', 'Betalningsdatum', 'Information', 'Id'])
+    t_table_fakturor = PrettyTable(['FakturaNr', 'År', 'HusNr', 'Belopp', 'Betalningsstatus', 'Betalningsdatum', 'Faktura id', 'Id'])
 
     for faktura in lista_fakturor:
-        t_table.add_row([ faktura.fakturanr, faktura.year, faktura.husnr, faktura.belopp, faktura.betalningsstatus, faktura.betalningsdatum, faktura.info, faktura.f_id])
+        t_table_fakturor.add_row([ faktura.fakturanr, faktura.year, faktura.husnr, faktura.belopp, faktura.betalningsstatus, faktura.betalningsdatum, faktura.f_id, faktura.id])
     
     print(t_table_fakturor)
     input("Fortsätta? tryck Enter: ")

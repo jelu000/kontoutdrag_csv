@@ -1,18 +1,56 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLPackage</id><coordinates><x>60</x><y>50</y><w>200</w><h>150</h></coordinates><panel_attributes>hus
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text/>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>60</x>
+      <y>50</y>
+      <w>200</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>hus
 --
 id: INEGER unique autoinc
 husnr: TEXT unique
 fnamn: TEXT
 enamn TEXT
 epost: TEXT
-tel: TEXT</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>290</x><y>90</y><w>370</w><h>250</h></coordinates><panel_attributes>fakturor
+tel: TEXT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>290</x>
+      <y>90</y>
+      <w>370</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>fakturor
 --
-f_id: INTEGER unique autoinc
+id: INTEGER unique autoinc
 fakturanr: TEXT
-    year: INTEGER
-    husnr: TEXT 
-    belopp: INTEGER
-    betalningsstatus: INTEGER
-    betalningsdatum: DATE
-    info: TEXT
-    FOREIGN KEY(husnr) REFERENCES hus(husnr)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>160</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element></diagram>
+year: INTEGER
+husnr: TEXT 
+belopp: INTEGER
+betalningsstatus: INTEGER
+betalningsdatum: DATE
+f_id: TEXT . format=year+fakturanr+husnr
+FOREIGN KEY(husnr) REFERENCES hus(husnr)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>250</x>
+      <y>160</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+</diagram>

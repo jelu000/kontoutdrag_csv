@@ -1,7 +1,7 @@
 
 class Faktura:
 
-    def __init__(self, fakturanr:str=None, year:int=None, husnr:str=None, belopp:str=None, betalningsstatus:int=None, betalningsdatum:str=None, info:str=None, f_id=None, ):
+    def __init__(self, fakturanr:str=None, year:int=None, husnr:str=None, belopp:str=None, betalningsstatus:int=None, betalningsdatum:str=None, f_id=None, id=None ):
         
         self.fakturanr = fakturanr
         self.year = year
@@ -9,8 +9,8 @@ class Faktura:
         self.belopp = belopp
         self.betalningsstatus = betalningsstatus
         self.betalningsdatum = betalningsdatum
-        self.info = info
         self.f_id = f_id
+        self.id = id
 
    
 
@@ -35,5 +35,5 @@ class Faktura:
     def set_betalningsdatum(self, betalningsdatum:str):
         self.betalningsdatum = betalningsdatum
 
-    def set_info(self, info:str):
-        self.info = info
+    def set_F_id(self, f_id:str):
+        self.f_id = f_id
