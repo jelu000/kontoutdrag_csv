@@ -100,7 +100,7 @@ class DbHandler:
     def read_table_hus(self):
 
         lista_hus = []
-
+        
         try:
             sqliteConnection = sqlite3.connect(self.db_name)
             cursor = sqliteConnection.cursor()

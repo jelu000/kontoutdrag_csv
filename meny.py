@@ -57,7 +57,7 @@ def createFaktura():
 
 
 #List all hus
-def print_list_hus(lista_hus):
+def print_list_hus(lista_hus:list):
     os.system('cls' if os.name == 'nt' else 'clear')
     t_table = PrettyTable(['HusNr', 'Förnamn', 'Efternamn', 'Epost adress', 'Telefonummer', 'Id'])
 
@@ -65,6 +65,7 @@ def print_list_hus(lista_hus):
         t_table.add_row([ huset.husnr, huset.fnamn, huset.enamn, huset.epost, huset.tel, huset.id])
     
     print(t_table)
+    print(f"Antal hus: {len(lista_hus)}")
     input("Fortsätta? tryck Enter: ")
 
 
