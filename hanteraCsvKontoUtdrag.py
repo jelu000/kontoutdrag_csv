@@ -40,7 +40,7 @@ def huvudmenu(belopp, period, year):
     print(f"\t1. Visa inbetalningar på {belopp}kr från csv kontoutdrag sorterat på datum")#order by datum
     print(f"\t2. Visa inbetalningar på {belopp}kr från csv kontoutdrag sorterat på husnr")#order by husnr
     print("\t3. Visa hela kontoutdraget")#order by datum
-    print("\t4. Lista årets betalningar för valt år")#Order by husnr
+    print("\t4. Lista betalningar för period och år")#Order by husnr
     print("\t5. Föröver batalningar från csv kontoutdrag till DB")
     print("\t6. Lista betalningar från Db för valt år och period")
     print("\t7. Tabort faktura")
